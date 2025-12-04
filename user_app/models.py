@@ -23,13 +23,14 @@ class User(models.Model):
         return f"{self.first_name} {self.last_name}"
 
 class Anonymous(models.Model):
-    celebrant = models.ForeignKey(User, on_delete= models.CASCADE, related_name='wishes')
-    messages = models.CharField()
-    created= models.TimeField(auto_now=True)
-    update = models.TimeField(auto_now=True) 
-    
+    celebrant = models.ForeignKey(User, on_delete=models.CASCADE, related_name='wishes')
+    messages = models.CharField(max_length=500)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
     def __str__(self):
-        return self.messages
+        return f"Wish for {self.celebrant}: {self.messages[:30]}"
+
     
     
     
