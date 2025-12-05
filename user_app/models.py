@@ -30,6 +30,16 @@ class Anonymous(models.Model):
 
     def __str__(self):
         return f"Wish for {self.celebrant}: {self.messages[:30]}"
+class Broadcast(models.Model):
+    Broadcast_message = models.CharField(max_length=800)
+    Broadcast_media = models.FileField(upload_to="broadcasts/", blank=True, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.Broadcast_message[:20]
+
+    
 
     
     

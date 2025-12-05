@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from user_app.models import User, Anonymous
+from user_app.models import User, Anonymous, Broadcast
 from phonenumber_field.serializerfields import PhoneNumberField
 
 class UserSerializer(serializers.ModelSerializer):
@@ -27,3 +27,10 @@ class AnonymousSerializer(serializers.ModelSerializer):
     class Meta:
         model = Anonymous
         fields = ["id", "celebrant", "message", "created_at"]
+        
+class BroadcastSerializer(serializers.ModelSerializer):
+    Broadcast_media = serializers.ImageField(use_url=True)
+    class Meta:
+        model = Broadcast
+        fields = "__all__"
+

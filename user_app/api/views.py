@@ -1,6 +1,6 @@
 from rest_framework import generics
-from user_app.models import User, Anonymous
-from user_app.api.serializers import UserSerializer, AnonymousSerializer
+from user_app.models import User, Anonymous, Broadcast
+from user_app.api.serializers import UserSerializer, AnonymousSerializer, BroadcastSerializer
 from user_app.api.permissions import IsAdminOrReadOnly
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
@@ -56,3 +56,12 @@ class AnonymousDetail(generics.RetrieveUpdateDestroyAPIView):
         celebrant_id = self.kwargs.get('pk')
         wish_id = self.kwargs.get('wish_id')
         return Anonymous.objects.filter(celebrant=celebrant_id, id=wish_id)
+    
+class BroadcastList(generics.ListCreateAPIView):
+    queryset = Broadcast.objects.all()
+    serializer_class = BroadcastSerializer
+
+class BroadcastDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Broadcast.objects.all()
+    serializer_class = BroadcastSerializer
+    permission_classes = [AllowAny]
