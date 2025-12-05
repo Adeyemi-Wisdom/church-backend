@@ -20,21 +20,9 @@ from django.contrib.auth.models import User
 from django.http import HttpResponse
 
 def home(request):
-    return HttpResponse("Church Birthday API is Live 🚀")
-def temp_create_admin(request):
-    if User.objects.filter(username="admin").exists():
-        return HttpResponse("Admin already exists")
-
-    User.objects.create_superuser(
-        username="admin",
-        email="admin@test.com",
-        password="Admin12345"
-    )
-    return HttpResponse("Admin created successfully")
-
+    return HttpResponse("API is Live 🚀")
 
 urlpatterns = [
-    path("create-admin/", temp_create_admin),
     path("", home),
     path("admin/", admin.site.urls),
     path("users/", include("user_app.api.urls")),
