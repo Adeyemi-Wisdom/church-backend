@@ -27,8 +27,8 @@ SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-secret-key")
 # SECRET_KEY = 'django-insecure-jb^(4p$$fp_vre#(#g_qkw#7_+ux=7!ma^k@s#09!-i8%64tlj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv("DEBUG", "False") == "True"
-# DEBUG = True
+# DEBUG = os.getenv("DEBUG", "False") == "True"
+DEBUG = True
 ALLOWED_HOSTS = [
     "church-backend-s13t.onrender.com",
     "localhost",
