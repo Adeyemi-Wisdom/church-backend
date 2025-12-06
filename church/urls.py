@@ -24,19 +24,19 @@ from django.conf.urls.static import static
 def home(request):
     return HttpResponse("API is Live 🚀")
 
-def temp_create_admin(request):
-    if not User.objects.filter(username="admin").exists():
-        User.objects.create_superuser(
-            username="admin",
-            email="admin@test.com",
-            password="Admin12345"
-        )
-        return HttpResponse("Admin created again ✅")
-    else:
-        return HttpResponse("Admin already exists ✅")
+# def temp_create_admin(request):
+#     if not User.objects.filter(username="admin").exists():
+#         User.objects.create_superuser(
+#             username="admin",
+#             email="admin@test.com",
+#             password="Admin12345"
+#         )
+#         return HttpResponse("Admin created again ✅")
+#     else:
+#         return HttpResponse("Admin already exists ✅")
 
 urlpatterns = [
-    path("create-admin/", temp_create_admin),
+    # path("create-admin/", temp_create_admin),
     path("", home),
     path("admin/", admin.site.urls),
     path("users/", include("user_app.api.urls")),
