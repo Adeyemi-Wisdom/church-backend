@@ -65,25 +65,25 @@ class BroadcastList(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         broadcast = serializer.save()
 
-        # Get all user emails
-        user_emails = User.objects.values_list('email', flat=True)
+        # # Get all user emails
+        # user_emails = User.objects.values_list('email', flat=True)
 
-        subject = "New Broadcast from Church"
-        message = broadcast.Broadcast_message
+        # subject = "New Broadcast from Church"
+        # message = broadcast.Broadcast_message
 
-        # Send email with attachment if it exists
-        email = EmailMessage(
-            subject=subject,
-            body=message,
-            from_email=settings.DEFAULT_FROM_EMAIL,
-            to=list(user_emails)
-        )
+        # # Send email with attachment if it exists
+        # email = EmailMessage(
+        #     subject=subject,
+        #     body=message,
+        #     from_email=settings.DEFAULT_FROM_EMAIL,
+        #     to=list(user_emails)
+        # )
 
-        # Attach file if there is one
-        if broadcast.Broadcast_media:
-            email.attach_file(broadcast.Broadcast_media.path)
+        # # Attach file if there is one
+        # if broadcast.Broadcast_media:
+        #     email.attach_file(broadcast.Broadcast_media.path)
 
-        email.send(fail_silently=False)
+        # email.send(fail_silently=False)
     
 
 class BroadcastDetail(generics.RetrieveUpdateDestroyAPIView):
