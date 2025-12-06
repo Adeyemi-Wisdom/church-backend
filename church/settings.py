@@ -27,8 +27,8 @@ SECRET_KEY = os.getenv("SECRET_KEY", "unsafe-secret-key")
 # SECRET_KEY = 'django-insecure-jb^(4p$$fp_vre#(#g_qkw#7_+ux=7!ma^k@s#09!-i8%64tlj'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.getenv("DEBUG", "False") == "True"
-DEBUG = True
+DEBUG = os.getenv("DEBUG", "False") == "True"
+# DEBUG = True
 ALLOWED_HOSTS = [
     "church-backend-s13t.onrender.com",
     "localhost",
@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'phonenumber_field',
     "corsheaders",
     "cloudinary",
+    "cloudinary_storage",
     
     
 ]
@@ -175,6 +176,6 @@ EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = "wisdomadeyemi77@gmail.com"   # your Gmail address
-EMAIL_HOST_PASSWORD = "nbmpcernusahktpl"        # your Gmail App password
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
